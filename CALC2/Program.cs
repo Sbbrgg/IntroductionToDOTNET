@@ -13,7 +13,8 @@ namespace CALC2
 		static void Main(string[] args)
 		{
 			Console.Write("Введите арифметическое выражение: ");
-			string expression = "22+33-44/2+8*3";
+			//string expression = "22+33-44/2+8*3";
+			string expression = "22*33/44/2*8*3";
 			//string expression = Console.ReadLine();
 			expression = expression.Replace(".", ",");
 			expression = expression.Replace(" ", "");
@@ -22,7 +23,7 @@ namespace CALC2
 			char[] operators = new char[] { '+', '-', '*', '/' };
 			string[] operands = expression.Split(operators);
 			double[] values = new double[operands.Length];
-			for(int i = 0; i < operands.Length;i++)
+			for (int i = 0; i < operands.Length; i++)
 			{
 				values[i] = Convert.ToDouble(operands[i]);
 				Console.Write($"{values[i]}\t");
@@ -38,11 +39,30 @@ namespace CALC2
 
 			string[] operations = expression.Split(digits);
 			operations = operations.Where(o => o != "").ToArray();
-			for(int i = 0; i < operations.Length;i++)
+			for (int i = 0; i < operations.Length; i++)
 			{
 				Console.Write($"{operations[i]}\t");
 			}
 			Console.WriteLine();
+
+			while (operations[0] != "")
+			{
+				int i = 0;
+				for (; i < operations.Length; i++)
+				{
+					if (operations[i] == "*" || operations[i] == "/")
+					{
+						if (operations[i] == "*") values[i] *= values[i + 1];
+						if (operations[i] == "/") values[i] /= values[i + 1];
+					}
+					for (int index = i; index < operations.Length - 1; index++) operations[index] = operations[index + 1];
+					for (int index = i + 1; index < values.Length - 1; index++) values[index] = values[index + 1];
+					operations[operations.Length - 1] = "";
+					values[values.Length - 1] = 0;
+					if (operations[i] == "*" || operations[i] == "/") i--;
+				}
+			}
+			Console.WriteLine(values[0]);
 
 #if CALC_IF
 			if (expression.Contains("+"))
@@ -65,6 +85,13 @@ namespace CALC2
 				case '/': Console.WriteLine($"{values[0]} / {values[1]} = {values[0] / values[1]}"); break;
 			} 
 #endif
+
+		}
+		static void Shift(double[] arr, int index)
+		{
+			for (int i = index; i < arr.Length; i++)
+				arr[i] = arr[i + 1];
+			arr[arr.Length - 1] = 0;
 
 		}
 	}
