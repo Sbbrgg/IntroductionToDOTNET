@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays", "Arrays\Arrays.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calc", "Calc\Calc.csproj", "{BEC7E24C-1D2F-4E8F-8F77-8F67A4F9C61D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CALC2", "CALC2\CALC2.csproj", "{DEFD9042-D257-4887-BF56-AF337E40CE4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BEC7E24C-1D2F-4E8F-8F77-8F67A4F9C61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEC7E24C-1D2F-4E8F-8F77-8F67A4F9C61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEC7E24C-1D2F-4E8F-8F77-8F67A4F9C61D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFD9042-D257-4887-BF56-AF337E40CE4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFD9042-D257-4887-BF56-AF337E40CE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFD9042-D257-4887-BF56-AF337E40CE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFD9042-D257-4887-BF56-AF337E40CE4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

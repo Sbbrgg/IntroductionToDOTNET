@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define SIMPLE_CALC
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Calc
 	{
 		static void Main(string[] args)
 		{
+#if SIMPLE_CALC
 			while (true)
 			{
 				Console.WriteLine($"Введите выражение: ");
@@ -17,16 +19,16 @@ namespace Calc
 				if (exp == "exit") break;
 				exp.Replace(" ", "");
 				char op = ' ';
-				foreach(char c in exp)
+				foreach (char c in exp)
 				{
-					if(c == '+' || c == '-'|| c == '*' || c == '/')
+					if (c == '+' || c == '-' || c == '*' || c == '/')
 					{
 						op = c;
 						break;
 					}
 				}
 				string[] numbers = exp.Split(op);
-				if(numbers.Length != 2)
+				if (numbers.Length != 2)
 				{
 					Console.WriteLine($"Ошибка ввода выражения");
 					continue;
@@ -34,7 +36,7 @@ namespace Calc
 				double a = Convert.ToDouble(numbers[0]);
 				double b = Convert.ToDouble(numbers[1]);
 				double rez = 0;
-				switch(op)
+				switch (op)
 				{
 					case '+': rez = a + b; break;
 					case '-': rez = a - b; break;
@@ -43,7 +45,11 @@ namespace Calc
 					default: Console.WriteLine("Неверное выражение"); continue;
 				}
 				Console.WriteLine(rez);
-			}
+			} 
+#endif
+
+
+
 		}
 	}
 }
