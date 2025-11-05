@@ -47,9 +47,63 @@ namespace Calc
 				Console.WriteLine(rez);
 			} 
 #endif
+            Calculate calculator = new Calculate();
+            string[] testExpressions = {
+                "2+3",
+                "5-2",
+                "3*4",
+                "10/2",
+                "2^3",
+                "sin(0)",
+                "cos(0)",
+                "tan(0)",
+                "2+3*4",
+                "(2+3)*4",
+                "sin(0.5)",
+                "cos(0.5)"
+            };
 
+            // Запуск тестов
+            foreach (string expression in testExpressions)
+            {
+                try
+                {
+                    double result = calculator.CAlculate(expression);
+                    Console.WriteLine($"{expression} = {result}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{expression} -> Ошибка: {ex.Message}");
+                }
+            }
 
+            Console.WriteLine("\nИнтерактивный режим");
+            Console.WriteLine("===================");
+            Console.WriteLine("Введите выражения для вычисления (exit для выхода):");
 
-		}
+            // Интерактивный режим
+            while (true)
+            {
+                Console.Write("> ");
+                string input = Console.ReadLine();
+
+                if (input?.ToLower() == "exit")
+                    break;
+
+                if (string.IsNullOrWhiteSpace(input))
+                    continue;
+
+                try
+                {
+                    double result = calculator.CAlculate(input);
+                    Console.WriteLine($"Результат: {result}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка: {ex.Message}");
+                }
+            }
+
+        }
 	}
 }
